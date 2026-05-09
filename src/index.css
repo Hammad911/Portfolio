@@ -1,0 +1,188 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-portfolio-primary: #222222;
+  --color-portfolio-secondary: #7b7b7b;
+  --color-portfolio-tertiary: #f8f8f8;
+  --color-portfolio-white: #ffffff;
+  --color-portfolio-border: #e5e5e5;
+  --color-portfolio-muted: #b8b8b8;
+
+  --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-dm-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee-inner 42s linear infinite;
+}
+
+html.dark {
+  --color-portfolio-primary: #ececec;
+  --color-portfolio-secondary: #9a9a9a;
+  --color-portfolio-tertiary: #121212;
+  --color-portfolio-white: #1a1a1a;
+  --color-portfolio-border: #303030;
+  --color-portfolio-muted: #6d6d6d;
+}
+
+@keyframes marquee-inner {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.75rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 6.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+  }
+
+  .animate-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-portfolio-primary) 18%, transparent);
+  color: var(--color-portfolio-primary);
+}
+
+html.dark ::selection {
+  background-color: color-mix(in srgb, var(--color-portfolio-primary) 24%, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.use-custom-cursor {
+    cursor: none !important;
+  }
+
+  body.use-custom-cursor a,
+  body.use-custom-cursor button,
+  body.use-custom-cursor [role='button'],
+  body.use-custom-cursor input[type='submit'],
+  body.use-custom-cursor select {
+    cursor: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: var(--color-portfolio-tertiary);
+  color: var(--color-portfolio-primary);
+  font-family: var(--font-dm-sans);
+  font-weight: 500;
+  font-size: 106.25%; /* ~17px at 16px root */
+  line-height: 1.62;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 112.5%; /* ~18px */
+    line-height: 1.65;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    font-size: 118.75%; /* ~19px */
+  }
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* Hero portrait — edge wash into page bg (no harsh rectangular crop line) */
+.hero-portrait-wrap {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-portfolio-tertiary);
+}
+
+.hero-portrait-wrap::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 48%,
+      color-mix(in srgb, var(--color-portfolio-tertiary) 82%, transparent) 82%,
+      var(--color-portfolio-tertiary) 100%
+    ),
+    linear-gradient(
+      to right,
+      var(--color-portfolio-tertiary) 0%,
+      color-mix(in srgb, var(--color-portfolio-tertiary) 55%, transparent) 14%,
+      transparent 28%,
+      transparent 72%,
+      color-mix(in srgb, var(--color-portfolio-tertiary) 55%, transparent) 86%,
+      var(--color-portfolio-tertiary) 100%
+    ),
+    radial-gradient(
+      ellipse 150% 112% at 58% 36%,
+      transparent 22%,
+      color-mix(in srgb, var(--color-portfolio-tertiary) 55%, transparent) 52%,
+      color-mix(in srgb, var(--color-portfolio-tertiary) 94%, transparent) 82%,
+      var(--color-portfolio-tertiary) 100%
+    );
+}
+
+/* Form fields — consistent focus without heavy chrome */
+.portfolio-field {
+  transition:
+    border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-field:focus-visible {
+  outline: 2px solid var(--color-portfolio-primary);
+  outline-offset: 2px;
+  border-color: var(--color-portfolio-primary);
+}
