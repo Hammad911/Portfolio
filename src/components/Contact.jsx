@@ -50,7 +50,7 @@ export default function Contact() {
       )
       setFeedback({
         tone: 'ok',
-        text: 'Thanks — I received your message. I reply personally from my inbox (no automated email is sent to you).',
+        text: 'Thanks — I received your message.',
       })
       form.reset()
     } catch {
