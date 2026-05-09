@@ -69,22 +69,8 @@ export default function Hero() {
               variants={item}
               className="mb-8 flex flex-wrap gap-x-10 gap-y-7 md:mb-10 md:gap-x-14"
             >
-              <div>
-                <p className="font-display text-[clamp(2.85rem,6.75vw,5.05rem)] font-extralight leading-none tracking-[-0.04em] text-portfolio-primary [font-weight:200] tabular-nums">
-                  +10
-                </p>
-                <p className="mt-2.5 max-w-[14rem] text-base font-normal leading-relaxed text-portfolio-secondary md:text-[1.05rem] md:leading-snug">
-                  Vulnerabilities patched
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-[clamp(2.85rem,6.75vw,5.05rem)] font-extralight leading-none tracking-[-0.04em] text-portfolio-primary [font-weight:200] tabular-nums">
-                  +6
-                </p>
-                <p className="mt-2.5 max-w-[14rem] text-base font-normal leading-relaxed text-portfolio-secondary md:text-[1.05rem] md:leading-snug">
-                  Projects shipped end-to-end
-                </p>
-              </div>
+             
+              
             </motion.div>
 
             <motion.div variants={item} className="pt-10 md:pt-12 lg:pt-14">
